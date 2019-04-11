@@ -1,0 +1,55 @@
+<div style="text-align: center; max-width: 750px; margin: auto;">
+  <h2>
+    Welcome!!!
+  </h2>
+
+  <h4>Post Exam</h4>
+  <form (ngSubmit)="PostExam()">
+    <div class="form-group">
+      <label for="examDescriptionField">Description</label>
+      <input type="text" id="examDescriptionField" name="examDescriptionField" class="form-control"
+        [(ngModel)]="exam.Description" />
+    </div>
+
+    <div class="form-group">
+      <label for="examPassScorePercentageField">Pass Score</label>
+      <input type="text" id="examPassScorePercentageField" name="examPassScorePercentageField" class="form-control"
+        [(ngModel)]="exam.examPassScorePercentage" />
+    </div>
+
+    <div class="form-group">
+      <label for="examCourseIdField">Course Id</label>
+      <input type="text" id="examCourseIdField" name="examCourseIdField" class="form-control"
+        [(ngModel)]="exam.CourseId" />
+    </div>
+
+    <a class="btn btn-primary" (click)="AddQuestion()" style="margin-bottom: 10px;">AddQuestion</a>
+
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let question of exam.Questions">
+        <input type="text" name="examQuestionBody" class="form-control" [(ngModel)]="question.Body"
+          placeholder="Type question here" />
+
+        <input type="text" name="examQuestionAnswer" class="form-control" [(ngModel)]="question.Answer"
+          placeholder="Type answer here" />
+      </li>
+    </ul>
+
+    <button type="submit" class="btn btn-success" style="margin-top: 10px;">Post</button>
+  </form>
+
+  <h4>Post Course</h4>
+  <form (ngSubmit)="PostCourse()">
+    <div class="form-group">
+      <label for="courseNameField">Name</label>
+      <input type="text" id="courseNameField" name="courseNameField" [(ngModel)]="course.Name" class="form-control" />
+    </div>
+
+    <div class="form-group" *ngIf="!loginSignupToggle">
+      <label for="courseContentField">Content</label>
+      <textarea id="courseContentField" name="courseContentField" class="form-control"
+        [(ngModel)]="course.Content"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Post</button>
+  </form>
+</div>

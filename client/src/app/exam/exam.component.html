@@ -1,0 +1,35 @@
+<ul class="list-group" *ngIf="viewState != 2">
+  <li class="list-group-item" *ngFor="let exam of exams">
+    <span>
+      {{exam.Description}}
+    </span>
+
+    <button class="btn btn-primary" (click)="ViewDetail(exam.Id)">
+      View
+    </button>
+  </li>
+</ul>
+
+<div class="card" *ngIf="viewState == 2 && singleExam && singleExam.Id">
+  <div class="card-header">
+    <h4>Exam</h4>
+    <p class="card-text">{{singleExam.Description}}</p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExamBody"
+      aria-expanded="false" aria-controls="collapseExamBody">
+      Take Exam
+    </button>
+  </div>
+  <div class="collapse card-body" id="collapseExamBody">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let question of singleExam.Questions">
+        <span>
+          {{question.Body}}
+        </span>
+
+        <input type="text" name="questionAnswer" class="form-control"
+        [(ngModel)]="question.Answer" placeholder="Type answer here"/>
+      </li>
+    </ul>
+    <button type="button" class="btn btn-success" (click)="SubmitExam()">Submit</button>
+  </div>
+</div>

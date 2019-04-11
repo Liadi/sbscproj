@@ -1,0 +1,25 @@
+<ul class="list-group" *ngIf="viewState != 1">
+  <li class="list-group-item" *ngFor="let course of courses">
+    <span>
+      {{course.Name}}
+    </span>
+
+    <button class="btn btn-primary" (click)="ViewDetail(course.Id)">
+      View
+    </button>
+  </li>
+</ul>
+
+
+<div class="card" *ngIf="viewState == 1 && singleCourse && singleCourse.Id">
+  <div class="card-header">
+    <h4>Course</h4>
+    <h6>{{singleCourse.Name}}</h6>
+    <p class="card-text">{{singleCourse.Content}}</p>
+    <!-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseCourseBody"
+      aria-expanded="false" aria-controls="collapseCourseBody">
+      Take Exam
+    </button> -->
+  </div>
+  
+</div>
